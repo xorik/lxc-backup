@@ -1,0 +1,31 @@
+{
+	"server":
+	{
+		"host": "192.168.0.1",
+		"ssh-port": 22,
+		"ssh-user": "lxc-backup",
+		"lxc-dir": "/var/lib/lxc",
+		"storage":
+		{
+			"type": "lvm",
+			"vgname": "lvm",
+			"template": "{VM}",
+			"snapshot-size": "10G"
+		}
+	},
+	"backup":
+	{
+		"host": "192.168.0.2",
+		"ssh-user": "lxc-backup",
+		"storage":
+		{
+			"type": "zfs",
+			"zfspool": "zfs",
+			"zfsmount": "/zfs",
+			"vmdir": "vm",
+			"template": "{VM}",
+			"snapshots-num": 10,
+			"snapshot-template": "snapshot-{YEAR}-{MONTH}-{DAY}-{HOUR}:{MIN}"
+		}
+	}
+}
